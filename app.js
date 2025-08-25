@@ -21,6 +21,7 @@ const reviewRouter = require("./routes/review.js");
 const userRouter = require("./routes/user.js");
 
 const dbUrl = process.env.ATLASDB_URL;
+const MONGO_URL = "mongodb+srv://himanshugurjar1306:GZlaOnOylYEOF3ds@cluster0.3ytsj21.mongodb.net/";
 
 main()
     .then(() => {
@@ -68,6 +69,54 @@ const sessionOptions = {
 };
 
 app.get("/",(req,res) => {
+    res.redirect("/listings");
+});
+
+//Index Route
+app.get("/listings", async (req,res) => {
+    const allListings = await Listing.find({});
+    res.render("listings/index.ejs",{allListings});
+});
+
+//New Route
+app.get("/listings/new", async (req,res) => {
+    res.render("listings/new.ejs");
+});
+
+//Show Route
+app.get("/listings/:id", async (req,res) => {
+    let {id} = req.params;
+    const listing = await Listing.findById(id);
+    res.render("listings/show.ejs",{listing});
+});
+
+//Create Route
+app.post("/listings", async(req,res) => {
+    //let {title,description,image,price,country,location} = req.body;
+    const newListing = new Listing(req.body.listing);
+    await newListing.save();
+    res.redirect("/listings");
+});
+
+//Edit Route
+app.get("/listings/:id/edit", async (req,res) => {
+    let {id} = req.params;
+    const listing = await Listing.findById(id);
+    res.render("listings/edit.ejs", {listing});
+});
+
+//Update Route
+app.put("/listings/:id", async (req,res) => {
+    let { id } = req.params;
+    await Listing.findByIdAndUpdate(id, {...req.body.listing});
+    res.redirect(`/listings/${id}`);
+});
+
+//Delete Route
+app.delete("/listings/:id", async (req,res) => {
+    let { id } = req.params;
+    let deletedListing = await Listing.findByIdAndDelete(id);
+    console.log(deletedListing);
     res.redirect("/listings");
 });
 

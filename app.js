@@ -1,6 +1,3 @@
-
-
-
 if(process.env.NODE_ENV != "production") {
     require('dotenv').config();
 }
@@ -18,7 +15,6 @@ const flash = require("connect-flash");
 const passport = require("passport");
 const LocalStrategy = require("passport-local");
 const User = require("./models/user.js");
-const Listing = require("./models/listing.js");
 
 const listingRouter = require("./routes/listing.js");
 const reviewRouter = require("./routes/review.js");
@@ -93,60 +89,12 @@ app.use((req, res, next) => {
     next();
 });
 
-// Root route
+// Root route - redirect to listings
 app.get("/", (req, res) => {
     res.redirect("/listings");
 });
 
-// Direct listing routes (these should be moved to listing router for better organization)
-// Index Route
-app.get("/listings", async (req, res) => {
-    const allListings = await Listing.find({});
-    res.render("listings/index.ejs", { allListings });
-});
-
-// New Route
-app.get("/listings/new", async (req, res) => {
-    res.render("listings/new.ejs");
-});
-
-// Show Route
-app.get("/listings/:id", async (req, res) => {
-    let { id } = req.params;
-    const listing = await Listing.findById(id);
-    res.render("listings/show.ejs", { listing });
-});
-
-// Create Route
-app.post("/listings", async(req, res) => {
-    const newListing = new Listing(req.body.listing);
-    await newListing.save();
-    res.redirect("/listings");
-});
-
-// Edit Route
-app.get("/listings/:id/edit", async (req, res) => {
-    let { id } = req.params;
-    const listing = await Listing.findById(id);
-    res.render("listings/edit.ejs", { listing });
-});
-
-// Update Route
-app.put("/listings/:id", async (req, res) => {
-    let { id } = req.params;
-    await Listing.findByIdAndUpdate(id, { ...req.body.listing });
-    res.redirect(`/listings/${id}`);
-});
-
-// Delete Route
-app.delete("/listings/:id", async (req, res) => {
-    let { id } = req.params;
-    let deletedListing = await Listing.findByIdAndDelete(id);
-    console.log(deletedListing);
-    res.redirect("/listings");
-});
-
-// Router middleware
+// Router middleware - REMOVE duplicate routes from app.js, let routers handle them
 app.use("/listings", listingRouter);
 app.use("/listings/:id/reviews", reviewRouter);
 app.use("/", userRouter);

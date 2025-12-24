@@ -103,21 +103,16 @@ body {
 
 /* Show Image */
 .show-img {
-    max-height: 30vh;
-    width: 100%;
-    object-fit: cover;
-    border-radius: 0.375rem 0.375rem 0 0;
+    height: 30vh;
 }
 
 .btns {
     display: flex;
-    margin-bottom: 3rem;
 }
 
 .show-card {
     padding-left: 0;
     padding-right: 0;
-    margin-bottom: 2rem;
 }
 
 /* Map */
@@ -125,9 +120,4 @@ body {
   width: 100%;
   height: 400px; 
   border-radius: 10px;
-  margin-bottom: 3rem;
-}
-
-main {
-    padding-bottom: 3rem !important;
 }

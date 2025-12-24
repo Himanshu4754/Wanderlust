@@ -62,7 +62,7 @@ body {
     padding: 0 0.5rem;
 }
 
-row {
+.row {
     row-gap: 2rem;
 }
 

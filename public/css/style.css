@@ -58,7 +58,12 @@ body {
 /* Cards */
 .listing-cards {
     border: none !important;
-    margin-bottom: 5rem;
+    margin-bottom: 2rem;
+    padding: 0 0.5rem;
+}
+
+row {
+    row-gap: 2rem;
 }
 
 .card-img-top {

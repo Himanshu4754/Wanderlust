@@ -124,6 +124,7 @@ body {
 
 .btns {
     display: flex;
+    margin-top: 1rem;
 }
 
 .show-card {
@@ -134,7 +135,7 @@ body {
 }
 
 .show-card .card-body {
-    padding: 1rem !important;  
+    padding: 1.5rem !important;  
 }
 
 /* Map */

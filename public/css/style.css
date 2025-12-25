@@ -60,6 +60,7 @@ body {
     border: none !important;
     margin-bottom: 2rem;
     padding: 0 0.5rem;
+    overflow: hidden;
 }
 
 .row {
@@ -71,6 +72,7 @@ body {
     border-radius: 1rem !important;
     width: 100% !important;
     object-fit: cover !important;
+    height: 350px;
 }
 
 .card-body {
@@ -110,6 +112,9 @@ body {
 /* Show Image */
 .show-img {
     height: 30vh;
+    width: 100%;
+    object-fit: cover;
+    display: block;
 }
 
 .btns {

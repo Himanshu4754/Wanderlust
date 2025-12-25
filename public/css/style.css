@@ -57,14 +57,15 @@ body {
 
 /* Cards */
 .listing-card {
-    border: none !important;
+    border: 1px solid #ddd !important;
     margin-bottom: 2rem;
     padding: 0;
     overflow: hidden;
+    border-radius: 1rem !important;
 }
 
 .row {
-    row-gap: 2rem;
+    row-gap: 1rem;
 }
 
 .card-img-top {
@@ -124,6 +125,8 @@ body {
 .show-card {
     padding: 0;
     overflow: hidden;
+    border-radius: 1rem !important;
+    border: 1px solid #ddd !important;
 }
 
 .show-card .card-body {

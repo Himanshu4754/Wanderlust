@@ -115,6 +115,7 @@ body {
     width: 100%;
     object-fit: cover;
     display: block;
+    margin: 0;
 }
 
 .btns {
@@ -124,6 +125,11 @@ body {
 .show-card {
     padding-left: 0;
     padding-right: 0;
+    overflow: hidden;
+}
+
+.show-card .card-body {
+    padding: 1rem !important;  
 }
 
 /* Map */

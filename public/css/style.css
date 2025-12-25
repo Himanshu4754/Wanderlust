@@ -147,3 +147,8 @@ body {
   height: 400px; 
   border-radius: 10px;
 }
+
+.mapboxgl-ctrl-bottom-left,
+.mapboxgl-ctrl-bottom-right {
+    display: none !important;
+}

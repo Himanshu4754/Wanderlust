@@ -67,6 +67,7 @@ body {
 }
 
 .card-img-top {
+    display: block;
     border-radius: 1rem !important;
     width: 100% !important;
     object-fit: cover !important;

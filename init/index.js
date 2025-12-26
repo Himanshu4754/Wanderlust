@@ -1,8 +1,9 @@
+require('dotenv').config({ path: '../.env' });
 const mongoose = require("mongoose");
 const initData = require("./data.js");
 const Listing = require("../models/listing.js");
 
-const MONGO_URL = "mongodb+srv://himanshugurjar1306:GZlaOnOylYEOF3ds@cluster0.3ytsj21.mongodb.net/";
+const MONGO_URL = process.env.ATLASDB_URL;
 
 main()
     .then(() => {
@@ -18,9 +19,16 @@ async function main() {
 
 const initDB = async () => {
     await Listing.deleteMany({});
-    initData.data = initData.data.map((obj) => ({ ...obj, owner: "6892154a2894c22139123422" }));
+    
+    initData.data = initData.data.map((obj) => ({ 
+        ...obj, 
+        owner: "694cccac1a568dc7df54ede8"
+    }));
+    
     await Listing.insertMany(initData.data);
     console.log("data was initialized");
+    
+    process.exit();
 }
 
 initDB();
